@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Mvvm1.Views.EmployeeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mvvm1.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Employee Management"  Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        
+        <TextBlock Text="Enter Id" Grid.Row="1" Grid.Column="0" Margin="20,0"/>
+        <TextBlock Text="Enter Name" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Enter Age" Grid.Row="3" Grid.Column="0"/>
+        <TextBox x:Name="curEmp" Text="{Binding Path=CurrentEmp.Id, Mode=TwoWay,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"  Grid.Row="1" Grid.Column="1" />
+        <!--<TextBox Text="{Binding ElementName=curEmp}"  Grid.Row="1" Grid.Column="1"/>-->
+        <TextBox Text="{Binding Path=CurrentEmp.Name, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Text="{Binding Path=CurrentEmp.Age, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+            <Button Content="Add" Command="{Binding Path=AddCommand}"/>
+            <Button Content="Search" Command="{Binding Path=SearchCommand}"/>
+            <Button Content="Update"/>
+            <Button Content="Delete"/>
+        </StackPanel>
+
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding UserName, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <ListBox x:Name="dgEmployees" ItemsSource="{Binding Path=EmpList, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="6"  Grid.Column="1"/>
+    </Grid>
+</UserControl>
