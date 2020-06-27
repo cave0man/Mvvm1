@@ -40,7 +40,7 @@ namespace Mvvm1.ViewModels
         #endregion
 
         #region commands
-        //Add command.
+        //Add command.  fgfgfdg
         RelayCommand addCommand;
         public RelayCommand AddCommand { get {return addCommand;} }
         public void Add()
